@@ -9,3 +9,6 @@
     However, I'm not so good at English, so please understand issues in grammar or word.  
     Thank you for reading.
 
+### 2.Current situation
+    Now, I practice about how to crawl the web site. 
+    It's pretty tough one, so I should solve more questions.
