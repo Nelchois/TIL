@@ -1,7 +1,7 @@
-# Cralling
+## Scraping example
 Hey there, this is Nelchois.
 Today, I learned how to use requests method and Beautifulsoup in bs4.
- Here's my codes about cralling 
+Here's my codes about scraping
 ```
 import requests
 from bs4 import BeautifulSoup
