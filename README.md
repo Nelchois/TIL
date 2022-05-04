@@ -10,5 +10,5 @@
     Thank you for reading.
 
 ### 2.Current situation
-    Now, I practice about how to crawl the web site. 
+    Now is april, I practice about how to crawl the web site. 
     It's pretty tough one, so I should solve more questions.
