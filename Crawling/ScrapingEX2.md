@@ -1,7 +1,7 @@
 ## Scraping example2
 Hey, there this is Nelchois
 I tried to make some crawling codes with using sqlite3.
-Here's my code
+Here's my code.
 ```
 import requests
 from bs4 import BeautifulSoup
