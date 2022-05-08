@@ -34,6 +34,7 @@ plt.scatter(X[Y == 2,0], X[Y == 2,1], s = 20, label = t1.target_names[2])
 ```
 
 ```
+#EX2 Load the data1_all fileset and make datasets, after that get test scores and compare them.
 import pandas as pd
 import numpy as np
 csv_data = pd.read_csv('data1_all.csv')
