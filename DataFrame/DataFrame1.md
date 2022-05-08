@@ -51,8 +51,16 @@ x==x = array([[True,True,True],
        [True,True,True]])
 ```
 
-### Pandas
-Practice
+## Pandas
+* Join
+We can connect data between pandas DataFrame.
+There are 4 types of join :'inner join', 'full join', 'left join', 'right join'
+inner join : If two tables have same key, merge that row's exist values.
+full join : In two tables merge each row, if there are same keys combine that row. However, if there are no keys just let the exist data.
+left join : Based on left table in two tables merge the values in same keys if that key is not in right table, delete that row.
+right join : The opposite of left join.  
+
+Practice code
 ```
 b=webdriver.Chrome()
 b.implicitly_wait(10)
@@ -83,16 +91,10 @@ b.quit()
 ``` 
 This code make DataFrame with webpage crawling.
 
-We can connect data between pandas DataFrame.
-There are 4 types of join :'inner join', 'full join', 'left join', 'right join'
-inner join : If two tables have same key, merge that row's exist values.
-full join : In two tables merge each row, if there are same keys combine that row. However, if there are no keys just let the exist data.
-left join : Based on left table in two tables merge the values in same keys if that key is not in right table, delete that row.
-right join : The opposite of left join.  
-
-### Data grouping
+* Data grouping
 We can make a group with pandas and numpy.
 Here's a DataFrame by pandas.
+Grouping EX1
 ```
 import numpy as np
 import pandas as pd
@@ -103,10 +105,9 @@ ipl_data = {'Team': ['Riders', 'Riders', 'Devils', 'Devils', 'Kings','kings', 'K
 'Points':[876,789,863,673,741,812,756,788,694,701,804,690]}
 df=pd.DataFrame(ipl_data)
 ```
-If we write .groupby like this ```c_df=df.groupby(["Team","Year"])["Points"].sum()``` then it show us Points sorted in Team and Year.
+If we write .groupby like this ```c_df=df.groupby(["Team","Year"])["Points"].sum()``` then it show us Points sorted in Team and Year. 
 
-### Grouping 
-
+Grouping EX2
 ```
 import numpy as np
 import pandas as pd

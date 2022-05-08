@@ -1,7 +1,9 @@
 ## Crawling example
+
 Hello, this is Nelchois.
 Today I learned how to open and use the browser in automatically.
 Here's my code.
+
 ```
 from selenium import webdriver#웹 컨트롤러 #1 import
 from selenium.webdriver.common.keys import Keys

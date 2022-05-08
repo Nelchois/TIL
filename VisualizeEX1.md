@@ -35,7 +35,7 @@ plt.show()
 There are some coordinate after ```add_subplot```, in this code (1,2,1), (1,2,2).
 Using these coordinate, we can control the orders of graph.
 
-### Visualize Wordcloud
+## Visualize Wordcloud
 ```
 from wordcloud import WordCloud, STOPWORDS
 import matplotlib.pyplot as plt
