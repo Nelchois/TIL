@@ -1,6 +1,8 @@
 # Machine Learning
-Here's example code based on pandas.
+Here's example code based on machine learning.
+
 ```
+#EX1 Load the boston fileset and make datasets based on boston file, after that make visualized graph.
 import pandas as pd
 t = load_boston()
 df = pd.DataFrame(t.data, columns=t.feature_names)
