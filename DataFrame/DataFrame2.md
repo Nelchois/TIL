@@ -1,4 +1,5 @@
 Today, I practice web crawling and DataFrame.
+
 ```
 b.find_element_by_xpath('//*[@id="web_1"]/div/div[2]/div[2]/a').click()
 b.implicitly_wait(10)
@@ -9,7 +10,7 @@ b.execute_script("window.scrollTo(0, 500)")
 b.implicitly_wait(10)
 b.find_element_by_xpath('//*[@id="tab_section"]/ul/li[2]/a').click()
 iframe = b.find_element_by_id('frame_ex2')
-b.switch_to.frame(iframe)
+b.switch_to.frame(iframe) # switch to inner frame in webpages 
 t=open("finance.csv","w",encoding="utf-8-sig",newline="")
 writer=csv.writer(t)
 writer.writerow(['통화명','심볼','현재가','전일대비','등락률'])
@@ -34,4 +35,4 @@ obj=DataFrame(data_l,columns=['통화명','심볼','현재가','전일대비','�
 final_obj=obj.set_index('통화명')
 final_obj.to_csv("finance_data.csv",encoding='utf-8-sig')
 ```
-
+If we didn't switch to iframe, then xpath can't find where it is.

@@ -1,4 +1,6 @@
 # Matplotlib
+Matplotlib is methods of visualize. 
+Usually we use pyplot, witch makes easy to show graph.
 ```
 import matplotlib.pyplot as plt
 x=[1,2,3]
