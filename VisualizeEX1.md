@@ -1,17 +1,4 @@
 # Visualize
-feature is characteristic of data.
-It's most important factor that build model.
-model usually express to fucntion(-> y = ax + b).
-In this fucntion, y is dependent variable that result of model and x is independent variable that input of model.
-a, b are important things, we call that weight value, which find as algorithm.
-
-Data_table is expressed data in graph(excel).
-Data_instance is one data line in excel.
-
-continuous data is continued value like temperature, speed, mean, dispersion.
-This data also has scale.
-discrete data is not continued value like text, address number, ... ect.
-This data don't have scale and separated by labels. 
 
 ## Matplotlib
 Matplotlib is methods of visualize. 
