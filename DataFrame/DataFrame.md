@@ -11,10 +11,11 @@ a, b are important things, we call that weight value, which find as algorithm.
 Data_table is expressed data in graph(excel).
 Data_instance is one data line in excel.
 ---
-continuous data is continued value like temperature, speed, mean, dispersion.
+* continuous data is continued value like temperature, speed, mean, dispersion.
 This data also has scale.
-discrete data is not continued value like text, address number, ... ect.
+* discrete data is not continued value like text, address number, ... ect.
 This data don't have scale and separated by labels. 
+---
 
 ## Numpy
 1. Numpy is module that make us easy to using matrix like this.
