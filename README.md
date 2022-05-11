@@ -12,3 +12,5 @@
 ### 2.Current situation
     Now is april, I practice about how to crawl the web site. 
     It's pretty tough one, so I should solve more questions.
+    Now is may, I analyze text data. 
+    Manufacturing data for machine learning.
