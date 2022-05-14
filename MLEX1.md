@@ -54,6 +54,7 @@ kn.predict(train_x[:4])
 ```
 
 ```
+# load csv_file and pretreatment data(fill null type data)
 import pandas as pd
 dataf = pd.read_csv('day5_data1.csv')
 dataf
@@ -70,6 +71,8 @@ dataf_one_hot.loc[pd.isnull(dataf_one_hot['Age']), 'Age'] = dataf_one_hot['Age']
 ```
 
 ```
+# Using sklearn separate the data to training, test data.
+  Train model with training data and compare to result of test data also, visualize result and score.
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
