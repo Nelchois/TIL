@@ -3,6 +3,7 @@
 ## Matplotlib
 Matplotlib is methods of visualize. 
 Usually we use pyplot, witch makes easy to show graph.
+There are various graph styles in pyplot, which bar, scatter, line, pie, ... ect
 ```
 import matplotlib.pyplot as plt
 x=[1,2,3]
@@ -22,6 +23,7 @@ plt.plot(X_1,Y_1)
 plt.plot(X_2,Y_2)
 ```
 If you want to show more than one graph that you can use ```subplots```
+Subplot collocate graph in entered coordinates.
 ```
 fig=plt.figure()
 fig.set_size_inches(10,10)
@@ -36,7 +38,7 @@ ax_1.plot(X_1,Y_1)
 ax_2.plot(X_2,Y_2)
 plt.show()
 ```
-There are some coordinate after ```add_subplot```, in this code (1,2,1), (1,2,2).
+In this code, there are some coordinate after ```add_subplot```, in this code (1,2,1), (1,2,2).
 Using these coordinate, we can control the orders of graph.
 
 ## Visualize Wordcloud
