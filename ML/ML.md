@@ -6,3 +6,8 @@ deep learning is similar to machine learning, but deep learning normally use neu
 * algorithms : the method or order to solve the problem.
 * machine learning : let machine learn about pattern and make the automatic algorithms.
 * big data : so huge data that is hard to collect, save and analyze in existing database.
+
+We can solve two types of problems.
+One is classification.
+In classification, it's really hard to classify real data for human, however if we use machine learning we can solve that problem just time and data for training.
+There is no reason for wrestle with the calculator.
