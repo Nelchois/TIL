@@ -6,9 +6,9 @@ deep learning is similar to machine learning, but deep learning normally use neu
 * algorithms : the method or order to solve the problem.
 * machine learning : let machine learn about pattern and make the automatic algorithms.
 * big data : so huge data that is hard to collect, save and analyze in existing database.
-Machine learning has basic structure that y = f(x). Machine learning is procedure of find that y with use data(x). It will present f(), which we want.
-* supervised learning : we give problems(data(x)) and answers(data(y)) to mahcine that make machine find the rule in problem cases.
-* unsupervised learning : it's a opposite of supervised learning. we give only training data(data(x)) and machine find the rule in data itself.
+Machine learning has basic structure that y = f(x). Machine learning is a procedure to find that y with use data(x). It will present f(), which we want.
+* supervised learning : we give problems(data(x)) and answers(data(y)) to the  machine that make it finds the rule in problem cases.
+* unsupervised learning : it's an opposite of supervised learning. we give only training data(data(x)) and machine find the rule in data itself.
 
 * reinforcement learning : computer learned and simulated rule in the world itself like a game rewards or punishment, generation : make something new didn't exist in the world like chatbot or make human face.
 
