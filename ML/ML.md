@@ -7,6 +7,8 @@ deep learning is similar to machine learning, but deep learning normally use neu
 * machine learning : let machine learn about pattern and make the automatic algorithms.
 * big data : so huge data that is hard to collect, save and analyze in existing database.
 Machine learning has basic structure that y = f(x). Machine learning is procedure of find that y with use data(x). It will present f(), which we want.
+* supervised learning : we give problems and answers to mahcine that make machine find the rule in problem cases.
+* unsupervised learning : it's a opposite of supervised learning. we give only training data and machine find the rule in data itself 
 
 We can solve two types of problems.
 One is classification.
