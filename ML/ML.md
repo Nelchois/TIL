@@ -3,6 +3,12 @@ Machine learning is technology that train pattern and rule in data to computer, 
 There is subconcept of machine learning, which is deep learning.
 deep learning is similar to machine learning, but deep learning normally use neural netwrok structure.
 
+Process of machine learning.
+1. Get training datasets.
+2. Input data with preprocessing
+3. Machine learning
+4. Predict by using test datasets.
+
 * algorithms : the method or order to solve the problem.
 * machine learning : let machine learn about pattern and make the automatic algorithms.
 * big data : so huge data that is hard to collect, save and analyze in existing database.
