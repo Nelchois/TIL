@@ -39,7 +39,7 @@ for page in range(1,10):
 browser.quit()
 ```
 This code is crawling from movie_review page in naver(south_korea).
-Warning, if you don't use ```time.sleep``` or ```browser.implicity_wait``` then webpages will kick or ban you, because they tought access by bot.  
+Warning, if you don't use ```time.sleep``` or ```browser.implicity_wait``` then webpages will kick or ban you, because they thought accessing by bot.  
 
 ### DataFrame
 ```
