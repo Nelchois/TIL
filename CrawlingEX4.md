@@ -1,4 +1,5 @@
 Question, Get some datasets, using webpage crawling and make DataFrame with pandas.
+### crawling
 ```
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -37,4 +38,13 @@ for page in range(1,10):
         time.sleep(2)
 browser.quit()
 ```
+This code is crawling from movie_review page in naver(south_korea).
 Warning, if you don't use ```time.sleep``` or ```browser.implicity_wait``` then webpages will kick or ban you, because they tought access by bot.  
+
+### DataFrame
+```
+import pandas as pd
+import numpy as np
+columns_name = ['movie', 'review', 'rating']
+movie_dataframe = pd.DataFrame(review_data, columns = columns_name)
+```
