@@ -1,3 +1,4 @@
+### Crawling subjects in page
 This code is smilar to Sample1, but this one doesn't crawling url. 
 ```
 # 라이브러리 import
@@ -83,7 +84,8 @@ print('수상 수: ', len(prize_list))
 prize_list
 ```
 
-Extend Ver : This code is extended version of first code. It collect str information in pages and manage some 'str' number. Finally, it will make DataFrame and analyzed score.
+### Extended Ver
+This code is extended version of first code. It collect str information in pages and manage some 'str' number. Finally, it will make DataFrame and analyzed score.
 ```
 # 영화배우 이름 검색
 name = '배우 이정재'
