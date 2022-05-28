@@ -86,6 +86,7 @@ prize_list
 
 ### Extended Ver
 This code is extended version of first code. It collect str information in pages and manage some 'str' number. Finally, it will make DataFrame and analyzed score.
+Search the actor name in potal website, get some information of filmography and awards.
 ```
 # 영화배우 이름 검색
 name = '배우 이정재'
