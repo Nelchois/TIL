@@ -18,6 +18,7 @@ Machine learning has basic structure that y = f(x). Machine learning is a proced
 
 * reinforcement learning : computer learned and simulated rule in the world itself like a game rewards or punishment, generation : make something new didn't exist in the world like chatbot or make human face.
 
+### Classification, Regression
 We can solve two types of problems in supervised learning.
 One is classification.
 In classification, it's really hard to classify real data for human, however if we use machine learning we can solve that problem just time and data for training.
