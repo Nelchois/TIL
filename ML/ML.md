@@ -9,14 +9,27 @@ Process of machine learning.
 3. Machine learning
 4. Predict by using test datasets.
 
+## Basic concept of Machine Learning
 * algorithms : the method or order to solve the problem.
+
 * machine learning : let machine learn about pattern and make the automatic algorithms.
+
 * big data : so huge data that is hard to collect, save and analyze in existing database.
-Machine learning has basic structure that y = f(x). Machine learning is a procedure to find that y with use data(x). It will present f(), which we want.
+Machine learning has basic structure that y = f(x). Machine learning is a 
+procedure to find that y with use data(x). It will present f(), which we want.
+
 * supervised learning : we give problems(data(x)) and answers(data(y)) to the  machine that make it finds the rule in problem cases.
+
 * unsupervised learning : it's an opposite of supervised learning. we give only training data(data(x)) and machine find the rule in data itself.
 
 * reinforcement learning : computer learned and simulated rule in the world itself like a game rewards or punishment, generation : make something new didn't exist in the world like chatbot or make human face.
+
+* null type data : existed data, however not recorded data. Even though data is existed, but it's impossible to train model without that data. We usually drop these data for preprocessing. 
+    1. ```dropna``` if we use this method, code will delete row that include NaN type data. After using this method, we should make new object or use ```inplace = True```, normally we make new object.
+    2. ```drop``` we can set option(how). If we give 'all' to option, code will delete row that all data is NaN type data. On the other way, if we give 'any' to option that make same result for ```dropna``` method. 
+    - 'axis' option set applicable axis in method, for example, if we use ```dropna``` method with ```axis = 1``` option, then code delete column instead of row. 
+
+* outlier : values which too big or too small that has big difference with other dataset. Usually it's hard to use these data for training. 
 
 ### Classification, Regression
 We can solve two types of problems in supervised learning.
