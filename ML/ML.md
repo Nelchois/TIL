@@ -31,7 +31,7 @@ procedure to find that y with use data(x). It will present f(), which we want.
     The second option is ```thresh```, if set thresh = n, code will remain row that has data at least n.
     3. ```fill``` we can fill the null type values after using ```drop```,
     at that time user consider mean, mode, median. 
-     
+    ```fillna``` method filled all null type values in data, but be careful, 'fill' method change data directly, so you don't have to use 'inplace'.     
 
 * outlier : values which too big or too small that has big difference with other dataset. Usually it's hard to use these data for training. 
 
