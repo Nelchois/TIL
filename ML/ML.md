@@ -33,6 +33,10 @@ procedure to find that y with use data(x). It will present f(), which we want.
     at that time user consider mean, mode, median. 
     ```fillna``` method filled all null type values in data, but be careful, 'fill' method change data directly, so you don't have to use 'inplace'.     
 
+* one-hot encoding : it's a get_dummies method in pandas or scikit-learn.
+This method make dummy variable as much as the number of categorical data, then write 0 or 1 that for the data existence. 
+After encoding, merge or connect between data.
+
 * outlier : values which too big or too small that has big difference with other dataset. Usually it's hard to use these data for training. 
 
 ### Classification, Regression
