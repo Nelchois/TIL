@@ -72,6 +72,9 @@ while i < n:
     time.sleep(1)
 
 print(data)
+
+data.to_csv('steam_Eternal_Return_review.csv')
+#Save data to CSV.
 ```
 Comment : There's nothing to explain in browser part. 
 In function, I use Beautiful soup, because there are a lot of same class in this page, so it's difficult to access a specific line that using xpath or selector.
