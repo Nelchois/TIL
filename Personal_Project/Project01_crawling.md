@@ -77,4 +77,5 @@ Comment : There's nothing to explain in browser part.
 In function, I use Beautiful soup, because there are a lot of same class in this page, so it's difficult to access a specific line that using xpath or selector.
 
 Next is scroll method. 
-This page is total page that if user scroll down then the page renewal document automatically, so there isn't method for switch page. 
+This page is total page that if user scroll down then the page renewal document automatically, so there isn't method for switch page.
+I use beautiful soup to get all documents that browser is locked and make scroll down.
