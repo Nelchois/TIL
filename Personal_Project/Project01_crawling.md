@@ -58,6 +58,7 @@ def steam(browser, k):
                 review_df = pd.concat([df, add_df])
         data = review_df
     return data 
+#Get review data to list and use zip method for make total, finally make new dataframe by concat and return.
 
 def scroll_down(browser):
     browser.execute_script("window.scrollTo(0, 99999999)")
