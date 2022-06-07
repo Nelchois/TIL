@@ -29,4 +29,26 @@ for i in range(1020):
     replace_review = using_data['review'][i].replace(' ', '')
     using_data['review'][i] = replace_review.split()
 #Split the review for make new DataFrame.
+
+for i in using_data['review']:
+    print(i)
+#Check the reviews in DataFrame
+
+review_date = []
+review_document = []
+for i in range(1020):
+    try:
+        date = using_data['review'].iloc[i][0]
+        review_date.append(date)
+        document = using_data['review'].iloc[i][1]
+        review_document.append(document)
+    except:
+        print(f'{i}번째 리뷰')
+        continue
+#This code make review list, however there are some problem to access the data by index, so check that line using try, except.
+
+drop_data = using_data.drop([430, 940], axis = 0)
+sorted_data = drop_data.reset_index(drop = True)
+#Drop unaccessible data line and sort the index in dataframe.
+
 ```
