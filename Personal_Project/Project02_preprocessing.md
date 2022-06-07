@@ -51,4 +51,22 @@ drop_data = using_data.drop([430, 940], axis = 0)
 sorted_data = drop_data.reset_index(drop = True)
 #Drop unaccessible data line and sort the index in dataframe.
 
+review_date = []
+review_document = []
+for i in range(1018):
+    try:
+        date = sorted_data['review'].iloc[i][0]
+        review_date.append(date)
+        document = sorted_data['review'].iloc[i][1]
+        review_document.append(document)
+    except:
+        print(f'{i}번째 행')
+        date = sorted_data['review'].loc[i][0]
+        review_date.append(date)
+        document = sorted_data['review'].loc[i][1]
+        review_document.append(document)
+        continue
+#This code make date and document list by data from dataframe.
+#Also, some line get some error that access by index, so in except, using loc.
+
 ```
