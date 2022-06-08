@@ -69,4 +69,29 @@ for i in range(1018):
 #This code make date and document list by data from dataframe.
 #Also, some line get some error that access by index, so in except, using loc.
 
+print(len(review_date), len(review_document))
+#Check the length of data.
+
+se_review_date = pd.Series(review_date)
+se_review_document = pd.Series(review_document)
+column_drop_data = sorted_data.drop('review', axis = 1)
+column_drop_data['review'] = se_review_document
+column_drop_data['date'] = se_review_date
+#Make new data frame with series and sorted_data
+
+
+for i in range(1018):
+    if type(column_drop_data['playtime'][i]) == str:
+        column_drop_data['playtime'][i] = column_drop_data['playtime'][i].replace(',', '')
+#There is mark in 'playtime' which ',' so, we have to remove that before change #data type.
+for i in range(1018):
+    try:
+        column_drop_data['playtime'][i] = float(column_drop_data['playtime'][i])
+    except:
+        print(f'{i}번째')
+In data frame the 'playtime' is str data so, using float method to change data type. 
+
+preprocess_data = column_drop_data
+preprocess_data.to_csv('preprocess_Eternal_Return.csv')
+#Save data to CSV file.
 ```
