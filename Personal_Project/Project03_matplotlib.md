@@ -1,3 +1,4 @@
+Code for visualize and make score about each month.
 ```
 data = pd.read_csv('preprocess_Eternal_Return.csv')
 review_data = data.drop(['Unnamed: 0'], axis = 1)
