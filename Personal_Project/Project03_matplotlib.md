@@ -31,4 +31,14 @@ May_data_1 = May_data[May_data['recommend'] == 1]
 May_recommend_rate = len(May_data_1)/len(May_data) * 100
 print(f'5월의 점수 : {May_recommend_rate : .2f} 점')
 #make score in May
+
+x = np.arange(3)
+rate = [March_recommend_rate, April_recommend_rate, May_recommend_rate]
+month = ['March', 'April', 'May']
+plt.bar(x, rate, color = ['r', 'g', 'b'])
+plt.xticks(x, month)
+plt.xlabel('month', fontsize = 12)
+plt.ylabel('score', fontsize = 12)
+plt.title('Monthly review score', fontsize = 20)
+#make graph about Montly score(March, April, May)
 ```
