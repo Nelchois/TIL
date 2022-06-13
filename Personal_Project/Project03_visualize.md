@@ -77,4 +77,23 @@ plt.xlabel('playtime', fontsize = 12)
 plt.ylabel('score', fontsize = 12)
 plt.title('score in playtime', fontsize = 20)
 #print graph of score
+
+import seaborn as sns
+import re
+import urllib.request
+from konlpy.tag import Okt
+from tensorflow.keras.preprocessing.text import Tokenizer
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+from wordcloud import WordCloud,STOPWORDS
+from hanspell import spell_checker
+from tqdm import tqdm
+from matplotlib import font_manager, rc
+font_path = r'C:\Windows\Fonts\GULIM.TTC'
+font = font_manager.FontProperties(fname=font_path).get_name()
+rc('font', family=font)
+from pykospacing import Spacing
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.model_selection import train_test_split
+from collections import Counter
+#import package for morphs
 ```
