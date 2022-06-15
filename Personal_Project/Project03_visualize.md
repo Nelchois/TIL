@@ -96,4 +96,18 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import train_test_split
 from collections import Counter
 #import package for morphs
+
+Learning_dataframe = review_data.rename(columns = {'recommend':'y', 'review' : 'X'})
+Learning_dataframe.isnull().values.any()
+stop_word=set(['은','는','이','가','를','들','에게','의','을','도','으로','만','라서','하다'])
+Learning_dataframe = Learning_dataframe.drop_duplicates(subset = ['X'])
+Learning_dataframe['clean_X'] = Learning_dataframe.X.str.replace('[^ㄱ-ㅎㅏ-ㅣ가-힣 ]','')
+okt=Okt()
+X_data=[] 
+for i in tqdm(Learning_dataframe['clean_X']): 
+    token_data = okt.nouns(i) 
+    end_data=[word for word in token_data if not word in stop_word]#불용어 처리 
+    X_data.append(' '.join(end_data))
+#set stopwords and tokenize the dataframe
+
 ```
