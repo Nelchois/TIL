@@ -124,5 +124,15 @@ for i in sort_X:
 # Using 'set' in line 116, there are many overlapping about '', so 'set' remove 
 #all of '' except one
 
+split_sort_X
+count = Counter(split_sort_X)
+words = dict(count.most_common())
+words
+sort_text = ' '.join(i for i in split_sort_X)
+sort_text
 
+stopwords = set(STOPWORDS)
+stopwords.update(['게임', '겜', '좀', '때', '것'])
+wc = WordCloud(stopwords=stopwords, font_path=r'C:\Users\student\AppData\Local\Microsoft\Windows\Fonts\NanumGothic.ttf', background_color = 'white', max_words= 2000).generate_from_text(sort_text)
+plt.imshow(wc)
 ```
