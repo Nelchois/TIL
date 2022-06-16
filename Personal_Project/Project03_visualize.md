@@ -110,4 +110,19 @@ for i in tqdm(Learning_dataframe['clean_X']):
     X_data.append(' '.join(end_data))
 #set stopwords and tokenize the dataframe
 
+for i in X_data:
+    if len(i) < 2:
+        X_data.remove(i)
+sort_X = list(set(X_data))
+sort_X.remove('')
+split_sort_X = []
+for i in sort_X:
+    split_i = i.split()
+    for _ in range(len(split_i)):
+        a = split_i.pop()
+        split_sort_X.append(a)
+# Using 'set' in line 116, there are many overlapping about '', so 'set' remove 
+#all of '' except one
+
+
 ```
