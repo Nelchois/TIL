@@ -133,6 +133,8 @@ sort_text
 
 stopwords = set(STOPWORDS)
 stopwords.update(['게임', '겜', '좀', '때', '것'])
+#set stopwords for wordcloud
 wc = WordCloud(stopwords=stopwords, font_path=r'C:\Users\student\AppData\Local\Microsoft\Windows\Fonts\NanumGothic.ttf', background_color = 'white', max_words= 2000).generate_from_text(sort_text)
 plt.imshow(wc)
+#open the font and make wordcloud
 ```
