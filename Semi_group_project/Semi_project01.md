@@ -122,6 +122,6 @@ for j in range(1,page+1):
 
     # 판다스 데이터프레임으로 만들기   
     globals()['result_df'+str(j)] = pd.DataFrame.from_dict(dict, 'index')
-    
+#get text from url pages
 ```
 #access to webpage by url and take some part of data(name, category, writer and #info)
