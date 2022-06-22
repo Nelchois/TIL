@@ -123,5 +123,31 @@ for j in range(1,page+1):
     # 판다스 데이터프레임으로 만들기   
     globals()['result_df'+str(j)] = pd.DataFrame.from_dict(dict, 'index')
 #get text from url pages
-```
+
 #access to webpage by url and take some part of data(name, category, writer and #info)
+
+body_list = []
+chrome_path = chromedriver_autoinstaller.install()
+options = webdriver.ChromeOptions()
+options.add_argument('headless')
+options.add_argument('window-size=1920x1080')
+options.add_argument("disable-gpu")
+options.add_argument('--no-sandbox')
+options.add_argument('--disable-dev-shm-usage')
+driver = webdriver.Chrome(chrome_path, chrome_options=options)
+for i in tqdm_notebook(add_list[1000:2000]):
+    try :
+        driver.get(i) 
+        #내용 크롤링
+        overlays = "#bookinfo"                                 
+        body = driver.find_element_by_css_selector(overlays)          
+        body = body.text
+        body_list.append(body)
+         
+    except:
+        print("에러",i)
+        body_list.append("non") 
+        continue        
+driver.close()
+#the summary of book is too long that average length of data is over than 1,000
+#so, we make code seperately. 
