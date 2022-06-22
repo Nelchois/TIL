@@ -150,4 +150,4 @@ for i in tqdm_notebook(add_list[1000:2000]):
         continue        
 driver.close()
 #the summary of book is too long that average length of data is over than 1,000
-#so, we make code seperately. 
+#so, we make code separately. 
