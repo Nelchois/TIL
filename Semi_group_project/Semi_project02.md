@@ -37,3 +37,5 @@ drop_index_list # drop할 인덱스 확인
 drop_book_df = book.drop(drop_index_list) #인덱스리스트를 기반으로 행드롭
 preprocess_df = drop_book_df.reset_index() # 위의 드롭한 데이터프레임을 인덱스를 정렬하여 새 객체로 만듬
 ```
+#basically we remove useless str data which '신작', '작가', '이', '그'.
+#We left only korean in ```book['summary']``` , because we will compare book's #key word to major key word.
