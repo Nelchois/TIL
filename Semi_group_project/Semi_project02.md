@@ -39,3 +39,43 @@ preprocess_df = drop_book_df.reset_index() # 위의 드롭한 데이터프레임
 ```
 #basically we remove useless str data which '신작', '작가', '이', '그'.
 #We left only korean in ```book['summary']``` , because we will compare book's #key word to major key word.
+
+```
+# from here, we use Okt for morphs analyzing and sentencetransformer for text #embedding.
+
+import numpy as np
+import itertools
+
+from konlpy.tag import Okt
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+from sentence_transformers import SentenceTransformer
+
+okt = Okt() #형태소분석기
+preprocess_df['keywords'] = 0 #데이터프레임의 keywords 컬럼 생성 후 0값으로 채움
+try_n = 0 #행 위치 미리 지정
+for i in tqdm(preprocess_df.summary): #진행상황을 % 로 보여줌
+    try:
+        tokenized_doc = okt.pos(i) # summary 열을 토큰화
+        tokenized_nouns = ' '.join([word[0] for word in tokenized_doc if word[1] == 'Noun']) #단어 토큰 중 명사 만을 문자열화
+        preprocess_df['keywords'][try_n] = tokenized_nouns #데이터프레임 keywords 값을 변경해줌
+        try_n += 1 #행 위치 +1
+    except : 
+        preprocess_df['keywords'][try_n] = 'NaN' #에러 발생시 NaN값 처리
+        try_n += 1 #행 위치 +1
+        continue
+
+n_gram_range = (2, 3) #앞 2단어 뒤 3단어 범위설정
+preprocess_df['keywords_gram'] = 0 # 키워드 그램 열 생성 후 0값으로 채움
+try_n = 0
+for i in range(2963):
+    try : 
+        count = CountVectorizer(ngram_range=n_gram_range).fit([preprocess_df['keywords'][i]]) #n그램 적용(키워드 열의 항목)
+        candidates = count.get_feature_names() #피쳐 단어목록
+        preprocess_df['keywords_gram'][try_n] = candidates # 키워드 그램 열에 단어목록을 넣어줌
+        try_n += 1 
+    except : 
+        preprocess_df['keywords_gram'][try_n] = 'NaN'
+        try_n += 1
+        continue
+#we get the keywords and use n_gram with countvectorizer, so we can take #frequence of all keywords.
