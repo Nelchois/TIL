@@ -79,3 +79,36 @@ for i in range(2963):
         try_n += 1
         continue
 #we get the keywords and use n_gram with countvectorizer, so we can take #frequence of all keywords.
+
+```
+model = SentenceTransformer('sentence-transformers/xlm-r-100langs-bert-base-nli-stsb-mean-tokens') #import Key Bert model
+for i in tqdm(range(2963)):
+    try :
+        top_n = 5
+        doc_embedding = model.encode([preprocess_df.summary[i]]) #서머리 항목을 임베딩
+        candidate_embeddings = model.encode(preprocess_df.keywords_gram[i]) #키워드 그램 항목을 임베딩
+        distances = cosine_similarity(doc_embedding, candidate_embeddings) #두가지 임베딩 항목을 코사인 유사도로 계산
+        keywords = [preprocess_df.keywords_gram[i][index] for index in distances.argsort()[0][-top_n:]] # 코사인 유사도를 오름차순 정렬 후 인덱스의 뒤에서 부터 하나씩 인덱스로 받아줌
+        preprocess_df['keywords'][i] = keywords # 정렬 한 값을 순서대로 받음
+    except: 
+        continue
+#we get embedding values and calculate cos similarity between summary and #candidate
+
+import numpy as np
+import pandas as pd
+from numpy import dot
+from numpy.linalg import norm
+import urllib.request
+from sentence_transformers import SentenceTransformer
+
+preprocess_df.dropna(inplace= True) # Nan 항목을 가진 행을 전부 drop 처리
+
+preprocess_df = preprocess_df.reset_index() # 드롭한 후 인덱스 리셋
+
+preprocess_df = preprocess_df.drop(['index'],axis=1) #원래있던 인덱스 열은 drop 해줌
+
+preprocess_df['keywords_literal'] = preprocess_df['keywords'].apply(lambda x : (' ').join(x)) #키워드를 join 함수로 문자열화 해서 새 열에 저장
+
+preprocess_df['keywords_literal'] #문자열화 한 키워드 출력
+```
+#check and drop nulltype data in dataframe
