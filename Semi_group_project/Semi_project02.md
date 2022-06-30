@@ -208,5 +208,5 @@ def book_recommend(): #책 추천 시스템
         return grade_3_4_rec
 #book recommend system about major
 preprocess_df.to_csv('Semi_emb.csv')
-#save to csv
+#save to CSV file
 ```
