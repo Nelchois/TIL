@@ -169,7 +169,8 @@ class WindowClass(QMainWindow, QWidget, form_class) :
         elif grade >= 3:  # 3학년 이상
             grade_3_4_rec = find_answer(grade_3_4_book_data, major)
             self.textEdit.setText(str(grade_3_4_rec))
- 
+# we split data frame by grade (1, 2), (3, 4)
+
 #코드 실행시 GUI 창을 띄우는 부분
 #__name__ == "__main__" : 모듈로 활용되는게 아니라 해당 .py파일에서 직접 실행되는 경우에만 코드 실행
 if __name__ == "__main__" :
@@ -180,4 +181,5 @@ if __name__ == "__main__" :
     myWindow = WindowClass()
     myWindow.show()
     sys.exit(app.exec_())
+#make instance to prevent the crash memory
 ```
