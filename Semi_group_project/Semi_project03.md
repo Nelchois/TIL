@@ -112,3 +112,72 @@ def book_recommend(): #책 추천 시스템
 
 data = pd.read_csv('data_for_app') 
 #change file name's for data
+
+data.drop(['Unnamed: 0', 'Unnamed: 0.1', 'level_0', 'index'], axis = 1 ,inplace = True)
+
+data['embedding'] = data.embedding.str.replace('[','')
+data['embedding'] = data.embedding.str.replace(']','')
+data['embedding'] = data.embedding.str.replace('\n',' ')
+
+for i in range(len(data['embedding'])):
+    data['embedding'][i] = data['embedding'][i].split()
+
+for i in range(len(data['embedding'])):
+    for j in range(768):
+        data['embedding'][i][j] = float(data['embedding'][i][j])
+
+preprocess_df = data
+grade_1_2_book_data = preprocess_df[
+                preprocess_df['kind'].str.contains('문학') | preprocess_df['kind'].str.contains('인문／사회') | preprocess_df[
+                    'kind'].str.contains('경제／경영') | preprocess_df['kind'].str.contains('가정과생활') | preprocess_df[
+                    'kind'].str.contains('국어와외국어') | preprocess_df['kind'].str.contains('장르문학') | preprocess_df[
+                    'kind'].str.contains('대학교재') | preprocess_df['kind'].str.contains('자연과과학') | preprocess_df[
+                    'kind'].str.contains('컴퓨터와인터넷') | preprocess_df['kind'].str.contains('예술／대중문화')]
+grade_3_4_book_data = preprocess_df[
+                preprocess_df['kind'].str.contains('자기관리') | preprocess_df['kind'].str.contains('인문／사회') |
+                preprocess_df['kind'].str.contains('경제／경영') | preprocess_df['kind'].str.contains('가정과생활') |
+                preprocess_df['kind'].str.contains('국어와외국어') | preprocess_df['kind'].str.contains('대학교재') |
+                preprocess_df['kind'].str.contains('자연과과학') | preprocess_df['kind'].str.contains('컴퓨터와인터넷') |
+                preprocess_df['kind'].str.contains('예술／대중문화') | preprocess_df['kind'].str.contains('해외원서')]
+
+form_class = uic.loadUiType("Semi2.ui")[0]
+
+#메인 윈도우 클래스
+class WindowClass(QMainWindow, QWidget, form_class) :
+    #초기화 메서드
+    def __init__(self) :
+        super().__init__()
+        self.setupUi(self)
+        self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
+        #pushButton (시작버튼)을 클릭하면 아래 fuctionStart 메서드와 연결 됨.
+        self.initUI()
+        self.show()
+        
+    def initUI(self):
+        self.pushButton.clicked.connect(self.functionStart)
+        self.Closebutton.clicked.connect(self.close)
+        
+    # 시작버튼을 눌렀을 때 실행되는 메서드
+    def functionStart(self):
+        major = self.lineEdit.text()
+        grade = int(self.lineEdit_2.text())
+        if major not in embedding_major:
+            self.textEdit.setText('잘못된 학과 입력입니다.')
+        if grade <= 2:  # 2학년 이하
+            grade_1_2_rec = find_answer(grade_1_2_book_data, major)# 데이터프레임을 분할 후 데이터 지정함수에 넣어줌
+            self.textEdit.setText(str(grade_1_2_rec))     
+        elif grade >= 3:  # 3학년 이상
+            grade_3_4_rec = find_answer(grade_3_4_book_data, major)
+            self.textEdit.setText(str(grade_3_4_rec))
+ 
+#코드 실행시 GUI 창을 띄우는 부분
+#__name__ == "__main__" : 모듈로 활용되는게 아니라 해당 .py파일에서 직접 실행되는 경우에만 코드 실행
+if __name__ == "__main__" :
+    #app = QApplication(sys.argv) # argument
+    app = QtCore.QCoreApplication.instance()
+    if app is None:
+        app = QApplication(sys.argv)
+    myWindow = WindowClass()
+    myWindow.show()
+    sys.exit(app.exec_())
+```
