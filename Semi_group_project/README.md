@@ -8,8 +8,12 @@ Now days, reading volume is decreasing in South Korea.
 Because of that, reading comprehension and literacy are pretty decreased. 
 So, our team taught that we should care the reading volume at least university students that same as our ages.
 ---
-## Basic concept
+## Basic obstruction
 We taught that there are 3 obstructions of reading volume.
 1. Book cost, recently most of the books are more than $150 in each. It's pretty expensive for students.
 2. Information about the book, if someone makes up his mind about reading, however, it's hard to know about what books exist, at most bestseller that is too narrow.
 3. Interest, even if we pass the obstruction 2 and get some books, there is no guarantee that it will suit our interest. 
+
+## Solving concept
+We're using library data to solve book cost, because that books are all free for our target users.
+To solve obstruction 2 and 3, we take user's major data that user input directly.If we recommend book automatically, then user don't care about book information and interest. 
