@@ -20,3 +20,6 @@ To solve obstruction 2 and 3, we take user's major data that user input directly
 First, we collected books data(title, summary, genre) from library pages in my university(we did only one website, because, most of librarys in university have similar books group and recommendation list).
 Second, we collected major data(noun keywords) from curriculum subject in each major.
 Third, we using Okt(Korean morphs analyzer), N-gram, Sentence-transformer that get embedding value of keywords in data(book's summary, major data). 
+
+# Realization
+[Crawling](https://github.com/Nelchois/TIL/blob/master/Semi_group_project/Semi_project01.md) We using selenium, because, it's intuitive. We accessed to library page by webdriver and get url of books. From url, we took title, writer, number of books borrowed. After crawling, code make DataFrame by pandas.
