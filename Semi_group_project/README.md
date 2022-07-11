@@ -21,6 +21,7 @@ First, we collected books data(title, summary, genre) from library pages in my u
 Second, we collected major data(noun keywords) from curriculum subject in each major.
 Third, we using Okt(Korean morphs analyzer), N-gram, Sentence-transformer that get embedding value of keywords in data(book's summary, major data). 
 Last, visualize system by PYQT5, becasuse it's easy tool that use and make UI.
+I designed UI that two space for input and press button for activate.
 
 # Realization
 [Crawling](https://github.com/Nelchois/TIL/blob/master/Semi_group_project/Semi_project01.md) We using selenium, because, it's intuitive. We accessed to library page by webdriver and get url of books. From url, we took title, writer, number of books borrowed. Then, code make DataFrame by pandas.
