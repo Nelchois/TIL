@@ -31,3 +31,5 @@ I designed UI that two space for input and press button for activate.
 [N_gram, Embedding](https://github.com/Nelchois/TIL/blob/master/Semi_group_project/Semi_project02.md) We splited summary data about noun and dropped other data, then using tri_gram to predict the corpus. After that we got embedding scores about words in corpus and major data(noun). 
 
 [Cos_similarity](https://github.com/Nelchois/TIL/blob/master/Semi_group_project/Semi_project03.md) From embedding value in dataframe, we compared with major value and got similarity score of books, then make books list(upper 10) that have high score.
+
+[Visualize]() Making code to fucntion and connect them with UI that made by Pyqt5.
