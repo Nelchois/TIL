@@ -32,4 +32,4 @@ I designed UI that two space for input and press button for activate.
 
 [Cos_similarity](https://github.com/Nelchois/TIL/blob/master/Semi_group_project/Semi_project03.md) From embedding value in dataframe, we compared with major value and got similarity score of books, then make books list(upper 10) that have high score.
 
-[Visualize]() Making code to fucntion and connect them with UI that made by Pyqt5.
+[Visualize](https://github.com/Nelchois/TIL/blob/master/Semi_group_project/Semi_project03.md) Making code to fucntion and connect them with UI that made by Pyqt5.
