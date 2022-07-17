@@ -26,9 +26,9 @@ I designed UI that two space for input and press button for activate.
 # Realization
 [Crawling](https://github.com/Nelchois/TIL/blob/master/Semi_group_project/Semi_project01.md) We using selenium, because, it's intuitive. We accessed to library page by webdriver and get url of books. From url, we took title, writer, number of books borrowed. Then, code make DataFrame by pandas.
 
-[Preprocessing](https://github.com/Nelchois/TIL/blob/master/Semi_group_project/Semi_project02.md) After crawling, we dropped overlapped words and unnecessary words containing Special Characters.
+[Preprocessing](https://github.com/Nelchois/TIL/blob/master/Semi_group_project/Semi_project02.md) After crawling, we dropped overlapped words and unnecessary words containing Special Characters. We used Okt model that analyzer about Korean morphs.
 
-[N_gram, Embedding](https://github.com/Nelchois/TIL/blob/master/Semi_group_project/Semi_project02.md) We splited summary data about noun and dropped other data, then using tri_gram to predict the corpus. After that we got embedding scores about words in corpus and major data(noun). 
+[N_gram, Embedding](https://github.com/Nelchois/TIL/blob/master/Semi_group_project/Semi_project02.md) We splited summary data about noun and dropped other data, then using tri_gram to predict the corpus. After that we got embedding scores about words in corpus and major data(noun). We used Key_Bert model('sentence-transformers/xlm-r-100langs-bert-base-nli-stsb-mean-tokens') that pre_trained for keywords. 
 
 [Cos_similarity](https://github.com/Nelchois/TIL/blob/master/Semi_group_project/Semi_project03.md) From embedding value in dataframe, we compared with major value and got similarity score of books, then make books list(upper 10) that have high score.
 
