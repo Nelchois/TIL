@@ -16,7 +16,7 @@ We taught that there are 3 obstructions of reading volume.
 
 ## Solving concept
 We're using library data to solve book cost, because that books are all free for our target users.
-To solve obstruction 2 and 3, we take user's major data that user input directly.If we recommend book automatically, then user don't care about book information and interest. 
+To solve obstruction 2 and 3, we take user's major data that user input directly.If we recommend book automatically, then user don't care about book information and interest. Also, we split dataframe for 1st, 2nd grade and 3rd, 4th grade that 1st, 2nd contains literature and novel without self development and intensive major, 3rd, 4th grade is opposite.
 First, we collected books data(title, summary, genre) from library pages in my university(we did only one website, because, most of librarys in university have similar books group and recommendation list).
 Second, we collected major data(noun keywords) from curriculum subject in each major.
 Third, we using Okt(Korean morphs analyzer), N-gram, Sentence-transformer that get embedding value of keywords in data(book's summary, major data). 
