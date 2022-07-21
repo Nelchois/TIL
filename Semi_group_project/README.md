@@ -23,8 +23,8 @@ Third, we using Okt(Korean morphs analyzer), N-gram, Sentence-transformer that g
 Last, visualize system by PYQT5, becasuse it's easy tool that use and make UI.
 I designed UI that two space for input and press button for activate.
 
-# Realization
-[Crawling](https://github.com/Nelchois/TIL/blob/master/Semi_group_project/Semi_project01.md) We using selenium, because, it's intuitive. We accessed to library page by webdriver and get url of books. From url, we took title, writer, number of books borrowed. Then, code make DataFrame by pandas.
+## Process order
+[Crawling](https://github.com/Nelchois/TIL/blob/master/Semi_group_project/Semi_project01.md) We using selenium, because, it's intuitive that similar to human's using. We accessed to library page by webdriver and get url of books. From url, we took title, writer, number of books borrowed. Then, code make DataFrame by pandas.
 
 [Preprocessing](https://github.com/Nelchois/TIL/blob/master/Semi_group_project/Semi_project02.md) After crawling, we dropped overlapped words and unnecessary words containing Special Characters. We used Okt model that analyzer about Korean morphs.
 
