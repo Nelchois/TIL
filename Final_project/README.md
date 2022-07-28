@@ -8,4 +8,4 @@ Now days, many people do used goods trading. In there, smart device including sm
 ## Solution concept
 First, we get product's name and status, then trained model classify that status and make label 0 to 5. 0 is perfect one that just opened one even not opened products.
 Second, search data from dataframe by product's name with same label. After remove outlier and make average price about data.
-Third, send the answer to chat bot in Kakao openbuilder system, then print the answer to user by chat bot.
+Third, send the answer to chat bot in Kakao openbuilder system, then print the answer to user by chat bot. Kakao openbuilder is free for 50,000 chat, after that 30won about 1 case.
