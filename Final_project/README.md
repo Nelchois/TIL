@@ -13,3 +13,5 @@ Input message form 'Product name : status sentence' in one line, this line will 
 Second, search data from dataframe by product's name with same label. After remove outlier and make average price about data.
 Third, send the answer to chat bot in Kakao openbuilder system, then print the answer to user by chat bot. Kakao openbuilder is free for 50,000 chat, after that 30won about 1 case.
 
+### Crawling
+We check three used goods market sites that most famous in south korea.
