@@ -14,4 +14,4 @@ Second, search data from dataframe by product's name with same label. After remo
 Third, send the answer to chat bot in Kakao openbuilder system, then print the answer to user by chat bot. Kakao openbuilder is free for 50,000 chat, after that 30won about 1 case.
 
 ### Crawling
-We check three used goods market sites that most famous in south korea.
+We check three used goods market sites that most famous in south korea. We make 72 products list in smart phone and tablet pc. We take data from web site and remove commercial data or fake products. After that we use our classifier and split data in 5 labels, 0 is perfect one that just open or not opened products. 1 is clean and not scratched one. 2 is clean ,but repaired. 3 is usable products with little scratch. 4 is broken one or malfunctioning products. 
