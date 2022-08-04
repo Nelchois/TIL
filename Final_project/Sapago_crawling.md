@@ -1,5 +1,10 @@
 This is code about crawling for used goods data.
 ```
+import tensorflow as tf
+from transformers import TextClassificationPipeline
+from transformers import BertTokenizer
+from transformers import TFBertForSequenceClassification
+
 import schedule
 import time
 import requests
@@ -71,12 +76,12 @@ def bunjang_update_data():
     for i in range(len(item_list)):
         df = bunjang_crawling(item_list[i])
         update_bunjang = bunjang_preprocess(df)
+        update_bunjang.drop_duplicates(['title', 'price',  'desc'], inplace= True)
+        label(update_bunjang)
         if i == 0:
             continue
         elif i != 0:
             total_df = pd.concat([data_base, update_bunjang])
-            total_df.drop_duplicates(['title', 'price',  'desc'], inplace= True)
-            #total_df.drop(['Unnamed: 0'], axis= 1,inplace= True)
     return total_df.to_csv('sapago_live_data.csv'), print('번개장터 update!')
 
 
@@ -182,6 +187,7 @@ def Update_junggo():
     junggo_phone_df = junggo_phone_crawling()
     junggo_tablet_df = junggo_tablet_crawling()
     junggo_df = pd.concat([junggo_phone_df, junggo_tablet_df])
+    label(junggo_df)
     junggo = junggo_preprocess(junggo_df)
     total_df = pd.concat([data_base, junggo])
     total_df.drop_duplicates(['title', 'price',  'desc'], inplace= True)
@@ -257,13 +263,13 @@ def dangn_update_data():
     for i in range(len(item_list)):
         try:
             update_dangn = dangn_crawling(item_list[i])
+            dangn_preprocess(update_dangn)
+            update_dangn.drop_duplicates(['title', 'price',  'desc'], inplace= True)
+            label(update_dangn)
             if i == 0:
                 continue
             elif i != 0:
                 total_dangn_df = pd.concat([data_base, update_dangn])
-                total_dangn_df.drop_duplicates(['title', 'price',  'desc'], inplace= True)
-                #total_df.drop(['Unnamed: 0'], axis= 1,inplace= True)
-                total_dangn_df = dangn_preprocess(total_dangn_df)
         except:
             continue
     return total_dangn_df.to_csv('sapago_live_data.csv'), print('당근마켓 update!')
@@ -343,12 +349,11 @@ item_list = ['갤럭시s8+',
 
 data_base = pd.read_csv('sapago_live_data.csv', encoding= 'utf-8')
 
-schedule.every().day.at('17:20').do(Update_junggo)
-schedule.every().day.at('18:00').do(bunjang_update_data)
-schedule.every().day.at('17:20').do(dangn_update_data)
+schedule.every().day.at('16:36').do(Update_junggo)
+schedule.every().day.at('16:36').do(bunjang_update_data)
+schedule.every().day.at('16:36').do(dangn_update_data)
 
 while True:
     schedule.run_pending()
     time.sleep(1)
-    
 ```
