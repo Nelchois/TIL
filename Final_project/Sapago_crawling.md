@@ -1,10 +1,12 @@
 This is code about crawling for used goods data.
 ```
+
 import tensorflow as tf
 from transformers import TextClassificationPipeline
 from transformers import BertTokenizer
 from transformers import TFBertForSequenceClassification
 
+import os
 import schedule
 import time
 import requests
@@ -14,6 +16,32 @@ from datetime import datetime
 from bs4 import BeautifulSoup
 import re
 import numpy as np
+
+
+
+MODEL_SAVE_PATH = 'data_classification_model/end_model/fine-tuned-kykim-bert-base'
+loaded_tokenizer = BertTokenizer.from_pretrained(MODEL_SAVE_PATH)
+loaded_model = TFBertForSequenceClassification.from_pretrained(MODEL_SAVE_PATH, id2label={0: 0 , 1: 1, 2: 2, 3: 3, 4: 4, 5: 5})
+
+text_classifier = TextClassificationPipeline(
+    tokenizer=loaded_tokenizer, 
+    model=loaded_model, 
+    framework='tf',
+    return_all_scores=True
+)
+
+def label(label_data):
+    label_data['label']=np.nan
+    predicted_label_list = []
+    for text in label_data['desc']:
+        # predict
+        preds_list = text_classifier(text)
+
+        sorted_preds_list = sorted(preds_list[0], key=lambda x: x['score'], reverse=True)
+        predicted_label_list.append(sorted_preds_list[0]['label']) # label
+
+    label_data['label'] = predicted_label_list
+    return label_data
 
 query_phone = ['%B0%B6%B7%B0%BD%C3+s22', '%B0%B6%B7%B0%BD%C3+S8', '%B0%B6%B7%B0%BD%C3+S8%2B', '%B0%B6%B7%B0%BD%C3s9', '%B0%B6%B7%B0%BD%C3s9%2B', '%B0%B6%B7%B0%BD%C3s10', '%B0%B6%B7%B0%BD%C3s10%2B', '%B0%B6%B7%B0%BD%C3s10e',
                 '%B0%B6%B7%B0%BD%C3+s20', '%B0%B6%B7%B0%BD%C3S20%2B', '%B0%B6%B7%B0%BD%C3s20%BF%EF%C6%AE%B6%F3', '%B0%B6%B7%B0%BD%C3s21', '%B0%B6%B7%B0%BD%C3s21%2B', '%B0%B6%B7%B0%BD%C3s21%BF%EF%C6%AE%B6%F3',
@@ -77,12 +105,13 @@ def bunjang_update_data():
         df = bunjang_crawling(item_list[i])
         update_bunjang = bunjang_preprocess(df)
         update_bunjang.drop_duplicates(['title', 'price',  'desc'], inplace= True)
-        label(update_bunjang)
+        update_bunjang = label(update_bunjang)
         if i == 0:
+            label_update_bunjang = update_bunjang
             continue
         elif i != 0:
-            total_df = pd.concat([data_base, update_bunjang])
-    return total_df.to_csv('sapago_live_data.csv'), print('번개장터 update!')
+            total_bunjang_df = pd.concat([label_update_bunjang, update_bunjang])
+    return total_bunjang_df, print('번개장터 update!')
 
 
 #중고나라 크롤링, 전처리 코드 (쿼리 리스트 항목 추가필요, 데이터 따로 저장됨)
@@ -187,93 +216,93 @@ def Update_junggo():
     junggo_phone_df = junggo_phone_crawling()
     junggo_tablet_df = junggo_tablet_crawling()
     junggo_df = pd.concat([junggo_phone_df, junggo_tablet_df])
-    label(junggo_df)
+    junggo_df = label(junggo_df)
     junggo = junggo_preprocess(junggo_df)
-    total_df = pd.concat([data_base, junggo])
-    total_df.drop_duplicates(['title', 'price',  'desc'], inplace= True)
+    junggo.drop_duplicates(['title', 'price',  'desc'], inplace= True)
     #total_df.drop(['Unnamed: 0'], axis= 1,inplace= True)
-    return total_df.to_csv('sapago_live_data.csv'), print('중고나라 업데이트 완료!')
+    return junggo, print('중고나라 업데이트 완료!')
 
-def dangn_crawling(category):
-    dangn_item_list = []
-
-    for i in range(1):
-        url =f"https://www.daangn.com/search/{category}/more/flea_market?page={i}"
-        resp = requests.get(url)
-        soup = BeautifulSoup(resp.content , "html.parser")
-        getitem = soup.select(".flea-market-article")
-
-        for item in getitem:   
-            try:
-                dangn_item_list.append({
-                     'title' : item.select('.article-title')[0].text.strip(),
-                     'price' : item.select('.article-price')[0].text.strip(),
-                     'region' : item.select('.article-region-name')[0].text.strip(),
-                     'desc' : item.select('.article-content')[0].text.strip()
-                 })
-            except:
-                print('error')
-    df = pd.DataFrame(item_list)
-    
-    
-    return df
 def dangn_preprocess(df):
-    dangn_df = df
-    
-    dangn_df.reset_index(drop = True)
-    dangn_df['desc'] = dangn_df['desc'] \
-    .replace("'", '') \
-    .str.strip() \
-    .str[:255]
-    
-    #dangn_df = dangn_df[dangn_df['desc'].str.strip().astype(bool)]
-    
-    dangn_df['price'] = dangn_df['price'].astype(str).str.replace("만",'0000')
-    dangn_df['price'] = dangn_df['price'].astype(str).str.replace("원",'')
-    dangn_df['price'] = dangn_df['price'].astype(str).str.replace(",",'')
-    dangn_df['price'] = dangn_df['price'].astype(str).str.replace(" ",'')
-    #dangn_df['price'] = dangn_df['price'].map(lambda x : re.sub(r'[^0-9]', '', str(x)))
-    #dangn_df['price']=dangn_df['price'].re.findall('|d+', str)
-    #dangn_df['price'] = dangn_df['price'].replace(r'[^0-9]','', regex=True)
-    drop_list = dangn_df.query('desc.str.contains("매입|삽니다|구매|최고가|전기종|구함|구합니다|구해요|교환|잠금|풀어주세요")', engine='python').index
-    dangn_df = dangn_df.drop(drop_list)
-    
-    #dangn_df['price']=dangn_df['price'].replace('^ +','')
-    #dangn_df['price']=dangn_df['price'].replace('',np.nan) 
-    dangn_df=dangn_df.dropna(how='any') 
-    
-    dangn_df.price = dangn_df.price.astype('float')
-    
-    q1= dangn_df['price'].quantile(0.25)
-    q3= dangn_df['price'].quantile(0.75)
-    iqr=q3-q1
-    condition=dangn_df['price']>q3+1.5*iqr
+    try:
+        dangn_df = df
+        dangn_df.reset_index(drop = True)
+        dangn_df['desc'] = dangn_df['desc'].str.strip() \
+        
 
-    drop_price_list = dangn_df[condition].index
+        dangn_df = dangn_df[dangn_df['desc'].str.strip().astype(bool)]
+        dangn_df['price'] = dangn_df['price'].str.replace("만",'0000')
+        dangn_df['price'] = dangn_df['price'].str.replace(r'[^0-9]', '', regex=True)
+        drop_list = dangn_df.query('desc.str.contains("매입|삽니다|구매|최고가|전기종|구함|구합니다|구해요|교환")', engine='python').index
+        dangn_df = dangn_df.drop(drop_list)
+        dangn_df['price']=dangn_df['price'].replace('^ +','')
+        dangn_df['price']=dangn_df['price'].replace('',np.nan) 
 
-    dangn_df.drop(drop_price_list, inplace= True)
-    
-    dangn_df.reset_index(inplace= True)
+        drop_list = dangn_df.query('desc.str.contains("매입|삽니다|구매|최고가|전기종|구함|구합니다|구해요|교환|잠금|풀어주세요")', engine='python').index
+        dangn_df = dangn_df.drop(drop_list)
 
-    dangn_df.drop('index', axis= 1, inplace= True)
-    
+
+
+        dangn_df=dangn_df.dropna(how='any') 
+
+        dangn_df.price = dangn_df.price.astype('float')
+
+        q1= dangn_df['price'].quantile(0.25)
+        q3= dangn_df['price'].quantile(0.75)
+        iqr=q3-q1
+        condition=dangn_df['price']>q3+1.5*iqr
+
+        drop_price_list = dangn_df[condition].index
+
+        dangn_df.drop(drop_price_list, inplace= True)
+
+        dangn_df.reset_index(inplace= True)
+
+        dangn_df.drop('index', axis= 1, inplace= True)
+        dangn_df= dangn_df[['title','price','desc']]
+    except:
+        print("error")
     return dangn_df
 
-def dangn_update_data():
-    for i in range(len(item_list)):
-        try:
-            update_dangn = dangn_crawling(item_list[i])
-            dangn_preprocess(update_dangn)
-            update_dangn.drop_duplicates(['title', 'price',  'desc'], inplace= True)
-            label(update_dangn)
-            if i == 0:
-                continue
-            elif i != 0:
-                total_dangn_df = pd.concat([data_base, update_dangn])
-        except:
-            continue
-    return total_dangn_df.to_csv('sapago_live_data.csv'), print('당근마켓 update!')
+def dangn_update_data(item_list):
+    category = []
 
+    for i in range(1):
+        for j in range(len(item_list)):
+            url =f"https://www.daangn.com/search/{item_list[j]}/more/flea_market?page={i}"
+            resp = requests.get(url)
+            soup = BeautifulSoup(resp.content , "html.parser")
+            getitem = soup.select(".flea-market-article")
+
+            for item in getitem:   
+                try:
+                    category.append({
+                         'title' : item.select('.article-title')[0].text.strip(),
+                         'price' : item.select('.article-price')[0].text.strip(),
+                         'region' : item.select('.article-region-name')[0].text.strip(),
+                         'desc' : item.select('.article-content')[0].text.strip()
+                     })
+                except:
+                    print('error')
+    df = pd.DataFrame(category)
+    df = dangn_preprocess(df)
+    dangn_update_df = label(df)
+    
+    return dangn_update_df
+
+def save_data_frame():
+    update_junggo_df = Update_junggo()
+    update_bunjang_df = bunjang_update_data()
+    dangn_update_df = dangn_update_data(item_list)
+    junggo_bunjang_df = pd.concat([update_junggo_df, update_bunjang_df])
+    total_update_data = pd.concat([junggo_bunjang_df, dangn_update_df])
+    total_update_data.drop(total_update_data[total_update_data.title.str.contains('교신')== True].index, inplace= True)
+    total_update_data.drop(total_update_data[total_update_data.price < 10000].index, inplace = True)
+    total_update_data.drop(total_update_data[total_update_data.title.str.contains('삽니다')== True].index, inplace= True)
+    basic_data = pd.read_csv('라벨링끝 정제.csv', encoding= 'utf-8')
+    save_data = pd.concat([basic_data, total_update_data])
+    save_data.drop_duplicates(['title', 'price',  'desc'], inplace= True)
+    return save_data.to_csv('라벨링끝 정제.csv')
+    
 item_list = ['갤럭시s8+',  
 '갤럭시s8',
 '갤럭시s9+',
@@ -348,10 +377,12 @@ item_list = ['갤럭시s8+',
 '아이패드 프로 6세대']
 
 data_base = pd.read_csv('sapago_live_data.csv', encoding= 'utf-8')
-
-schedule.every().day.at('16:36').do(Update_junggo)
-schedule.every().day.at('16:36').do(bunjang_update_data)
-schedule.every().day.at('16:36').do(dangn_update_data)
+'''
+schedule.every().day.at('16:29').do(Update_junggo)
+schedule.every().day.at('16:29').do(bunjang_update_data)
+schedule.every().day.at('16:29').do(dangn_update_data)
+'''
+save_data_frame()
 
 while True:
     schedule.run_pending()
