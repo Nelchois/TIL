@@ -17,3 +17,6 @@ We check three used goods market sites that most famous in south korea. We make 
 
 ### [Classify model](https://github.com/Nelchois/TIL/blob/master/Final_project/BERT_Classifier.md)
  We use pretrained_language model for classifier([LMkor](https://github.com/kiyoungkim1/LMkor)). LMkor was trained by commercial reviews by custommer or text from blog that more suitable to Sapago Project, because other korean language models are trained by news text or political documents that grammar is correct and rigid, however our service need user's input that may be included inscriptions or typos. So we use LMkor which similar text that we use.
+
+ ### [Chat bot]
+ We use Kakao i open builder api, so we make the code based on json, because chat bot send the user's input to server by json file, then server replies answer to chat bot by json structure that makes chat bot convert to the specific answer style.
