@@ -16,7 +16,7 @@ Basic calculation is calculation carried out in 1 unit time, which means assignm
 ### Pseudo(Virtual) Languages
 This languages for simulation not actual action, so we don't care about complex grammers. These one just able to express that basic calculation, repeat and function(def)
 
-If someone wirte like this:
+If someone wirte code like this:
 ```
 algorithm arrayMax(A, n):
     input : Array A has n integers
