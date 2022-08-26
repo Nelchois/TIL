@@ -11,7 +11,7 @@ We simulate virtual environment which virtual machine, pesudo language, pseudo c
 ### Virtual Machine
 Our machine has changed Turing machine to Von Neumanm archtectures.
 In that archtectures consist by RAM(Random Access Machine) = CPU + Memory + basic calculation. 
-Basic calculation is calculation carried out in 1 unit time, which means assignment, substitution, copy, arithmetic(except likes remainder operation), compare operation, logical operation, bit operation.
+Basic calculation is calculation carried out in 1 unit time, which means allocate, substitution, copy, arithmetic(except likes remainder operation), compare operation, logical operation, bit operation.
 
 ### Pseudo(Virtual) Languages
 This languages for simulation not actual action, so we don't care about complex grammers. These one just able to express that basic calculation, repeat and function(def)
