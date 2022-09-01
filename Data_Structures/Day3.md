@@ -16,4 +16,11 @@ Dequeue : Can do operation of both Stack and Queue.
 Linked list : *Different with list in Python.
 Values are sotred in non-contiguous memory space. 
 Each value also contains address of next value. 
-It's impossible that access value by index. If we want access specific value we should find step by step.
+It's impossible that access value by index. If we want access specific value we should find step by step from previous value.
+
+Stack has push, pop, top, len methods. 
+Each method has O(1) time complexity.
+'push' is put value in Stack squentially.
+'pop' is same as 'pop' in Python list, this can delete value.
+'top' is find the last value in Stack, however doesn't delete value.
+'len' is offer the number of values in Stack.
