@@ -25,7 +25,7 @@ Each method has O(1) time complexity.
 'top' is find the last value in Stack, however doesn't delete value.
 'len' is offer the number of values in Stack.
 
-EX) How can find combination of parentheses.
+EX) How can find combination of parentheses with using Stack.
 First, random bunch of parentheses are input like "((()())())))))", then if their combination is right, return True if not return False.
 ```
 symbol_input = input("input bunch of parentheses : ")
