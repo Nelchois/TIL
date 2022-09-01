@@ -24,3 +24,25 @@ Each method has O(1) time complexity.
 'pop' is same as 'pop' in Python list, this can delete value.
 'top' is find the last value in Stack, however doesn't delete value.
 'len' is offer the number of values in Stack.
+
+EX) How can find combination of parentheses.
+First, random bunch of parentheses are input like "((()())())))))", then if their combination is right, return True if not return False.
+```
+symbol_input = input("input bunch of parentheses : ")
+def symbol_check():
+    item_list = []
+    for i in symbol_input:
+        if i == '(' :
+            item_list.append(i)
+        elif i == ')':
+            try:
+                item_list.pop()
+            except:
+                return False
+    if len(item_list) == 0:
+        return True
+    elif len(item_list) != 0:
+        return False
+a = symbol_check()
+print(a)
+```
