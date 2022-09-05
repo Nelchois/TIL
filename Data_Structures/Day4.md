@@ -71,3 +71,8 @@ def calculator():
             break
     return oper_list[0]
 ```
+In tokenize, system need to understand the number unit, for example 23 should recognize '23' token not '2', '3' and if there something like - or dot, should be reflected.
+
+In postfix, we make equation to postfix equation that make Stack in sequence according to the order of formula.
+
+Finally, calculator take answer by postfix equtaion. Using while, it repeat until elements become one. 
