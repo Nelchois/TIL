@@ -22,4 +22,5 @@ class Queue:
             x = self.items[front_index]
             self.front_index += 1
             return x
-
+```
+This is code of basic structure about Queue. We make class of Queue then, we assume about inqueue and dequeue. 
