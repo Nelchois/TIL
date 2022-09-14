@@ -24,12 +24,38 @@ b.next = c
 This code is basic structure of one_way linked list, however is uncomfortable that allocate all variable each node.
 
 ```
+class Node:
+    def __init__(self, key = None):
+        self.key = key
+        self.next = None
+
+    def __str__(self):
+        return str(self.key)
+
 class simply_Linked_list:
     def __init__(self):
         self.head = None
         self.size = 0
+
+    def pushFront(self, key):
+        new_node = Node(key)
+        new_node.next = L.head
+        L.head = new_node
+        L.size += 1
+
+    def pushBack(self, key):
+        v = Node(key)
+        if len(self) ==0: 
+            self.head = v
+        else: 
+            tail = self.head
+            while tail.next != None:
+                tail = tail.next
+            tail.next = v
+        self.size += 1
     def __len__(self):
         return self.size
+
 ```
 ### Bidirectional linked list
 Bidriectional linked list has 2 links in each node.
