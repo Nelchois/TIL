@@ -53,9 +53,40 @@ class simply_Linked_list:
                 tail = tail.next
             tail.next = v
         self.size += 1
+
     def __len__(self):
         return self.size
 
+    def popFront(self):
+        if len(self) == 0:
+            return None
+        else: #there is node more than 1
+            x = self.head
+            key = x.key
+            self.head = x.next
+            self.size -= 1
+            del x
+            return key 
+
+    def popBack(self):
+        if len(self) == 0:
+            return None
+        else:
+            prev, tail = None, self.head 
+            while tail.next != None:
+                prev = tail
+                tail = tail.next
+            if len(self) == 1:
+                self.head = None
+            else:
+                prev.next = None #or =tail.next
+            key = tail.key 
+            del key
+            self.size -= 1
+            return key
 ```
+pushFront, popFront has O(1) time_complexity.
+pushBack, pushFront has O(n) time_complexity.
+
 ### Bidirectional linked list
 Bidriectional linked list has 2 links in each node.
