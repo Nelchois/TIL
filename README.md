@@ -10,7 +10,4 @@
     Thank you for reading.
 
 ### 2.Current situation
-    Now is april, I practice about how to crawl the web site. 
-    It's pretty tough one, so I should solve more questions.
-    Now is may, I analyze text data. 
-    Manufacturing data for machine learning.
+    Now is February, recently I didn't commit my git_hub account that there some reason. After last November, I changed my problem solving web site from [BOJ](https://www.acmicpc.net) to [PRO](https://programmers.co.kr/). There is function that can link my PRO account to git_hub. So, I linked my account. I thought they sent my code to git_hub automaticaly, but they didn't. That's why my commit is stopped. Now, I check the issuse and start commit again.
